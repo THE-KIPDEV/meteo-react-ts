@@ -1,0 +1,157 @@
+.background {
+    overflow: hidden;
+    background-color: #1c1917;
+
+    video {
+        width: 100%;
+        height: calc(100vh);
+        object-fit: cover;
+    }
+}
+
+.container {
+    width: 500px;
+    max-width: calc(100vw - 140px);
+    height: auto;
+    margin: auto;
+    max-height: 80vh;
+    min-height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1c1917;
+    padding: 50px;
+    border-radius: 5px;
+    outline: 16px solid hsla(0, 0%, 100%, .2);
+    color: #fff;
+    overflow-y: auto;
+
+    @media (max-width: 768px) {
+        padding: 20px;
+        max-width: calc(100vw - 70px);
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #1c1917;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #fff;
+    }
+
+
+    input {
+        width: calc(100% - 20px);
+        height: 40px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        color: #fff;
+        background-color: #1c1917;
+        border: 1px solid #fff;
+    }
+
+    .autocompleteDropdownContainer {
+        position: absolute;
+        width: calc(100% - 130px);
+        border: 1px solid #fff;
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #1c1917;
+        border-radius: 5px;
+        z-index: 1;
+        padding: 16px;
+
+        >div {
+            padding: 8px;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: #fff;
+                color: #1c1917;
+                cursor: pointer;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+    }
+
+    .meteo__day {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .meteo__degree {
+        font-size: 40px;
+        margin-top: 10px;
+        font-weight: 700;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .meteo__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+        .meteo__icon {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: #1c1917;
+            -webkit-box-shadow: 5px 5px 9px #0c0b0a, -5px -5px 9px #2c2824;
+            box-shadow: 5px 5px 9px #0c0b0a, -5px -5px 9px #2c2824;
+            padding: 20px;
+            text-align: center;
+
+            img {
+                display: block;
+                margin: auto;
+                margin-bottom: 10px;
+            }
+        }
+
+    }
+
+    .forecastDays {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+
+        .dayName {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 0;
+            margin-top: 0;
+
+        }
+
+        .dayTemp {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+    }
+}

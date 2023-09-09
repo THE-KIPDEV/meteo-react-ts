@@ -10,8 +10,9 @@ Pour installer cette application sur votre ordinateur, suivez ces étapes :
 
    ```bash
    git clone https://github.com/yohannkipfer/meteo-react-ts
-   
-2.  Installer les dépendances (node 20.5.0)
+
+2. Installer les dépendances
+
    ```bash
    pnpm install
 
@@ -19,8 +20,7 @@ Pour installer cette application sur votre ordinateur, suivez ces étapes :
 
    ```bash
    pnpm run dev
-
-
+   
 ## Clés d'API
 
 Dans index.html : 

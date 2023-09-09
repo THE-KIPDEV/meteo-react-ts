@@ -3,5 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
   overflow: hidden;
+  background-image: url('meteo.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 

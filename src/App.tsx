@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./App.module.scss";
 import "./App.css";
 import { getMeteoByLatLng } from "./Api/Meteo";
@@ -15,8 +15,9 @@ import {
 import { Daily, Meteo } from "./Type/meteo.type";
 import ForecastDay from "./Components/ForecastDay/ForecastDay";
 
+
 function App() {
-  const [meteo, setMeteo] = useState<Meteo>(null);
+  const [meteo, setMeteo] = useState<Meteo | null | undefined>(null);
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
   const [address, setAddress] = useState<string>("");
@@ -86,7 +87,10 @@ function App() {
           sunset: selectedDay.sunset,
           sunrise: selectedDay.sunrise,
           pressure: selectedDay.pressure,
-          visibility: selectedDay.visibility,
+          clouds: selectedDay.clouds,
+          dew_point: selectedDay.dew_point,
+          dt: selectedDay.dt,
+          wind_deg: selectedDay.wind_deg,
         },
       });
     }
@@ -97,7 +101,6 @@ function App() {
       <div className={styles.background}>
         {weatherType !== "" && (
           <video
-            defaultPlaybackRate="0.3"
             autoPlay
             muted
             src={`${weatherType}.mp4`}

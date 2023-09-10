@@ -1,8 +1,15 @@
-import React from 'react';
 import styles from './ForecastDay.module.scss'; 
 import dayjs from 'dayjs'; 
+import { Daily } from "../../Type/meteo.type.ts";
 
-const ForecastDay = ({ index, dayData, daySelected, handleDaySelect }) => {
+type ForecastDayProps = {
+  index: number;
+  dayData: Daily;
+  daySelected: number;
+  handleDaySelect: (index: number) => void;
+};
+
+const ForecastDay = ({ index, dayData, daySelected, handleDaySelect }: ForecastDayProps) => {
   return (
     <div
       key={index}

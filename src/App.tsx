@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./App.module.scss";
 import "./App.css";
 import { getMeteoByLatLng } from "./Api/Meteo";
@@ -24,6 +25,25 @@ function App() {
   const [weatherType, setWeatherType] = useState<string>("");
   const [daySelected, setDaySelected] = useState<number>(0);
   const [dayName, setDayName] = useState<string>("Aujourd'hui");
+  const { city } = useParams<{ city?: string }>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (city) {
+      const decoded = decodeURIComponent(city);
+      setAddress(decoded);
+      (async () => {
+        try {
+          const results = await geocodeByAddress(decoded);
+          const latLng = await getLatLng(results[0]);
+          setLat(latLng.lat);
+          setLng(latLng.lng);
+        } catch (error) {
+          console.error("Error fetching coordinates:", error);
+        }
+      })();
+    }
+  }, [city]);
 
   useEffect(() => {
     async function getMeteo() {
@@ -56,6 +76,7 @@ function App() {
 
       setLat(latLng.lat);
       setLng(latLng.lng);
+      navigate(`/weather/${encodeURIComponent(selected)}`);
     } catch (error) {
       console.error("Error fetching coordinates:", error);
     }
